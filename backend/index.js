@@ -1,5 +1,5 @@
-import express, { request } from "express";
-import { PORT, mongodbURL } from "./config.js"; 
+import express, { request, response } from "express";
+import { PORT, mongodbURL } from "./config.js";
 import mongoose from "mongoose";
 import { Book } from "./models/bookModel.js";
 
@@ -16,28 +16,85 @@ app.get("/", (request, response) => {
 
 // Get all books
 app.get("/books", async (request, response) => {
-    const books = await Book.find({});
-    return response.status(200).send(books);
+    try {
+        const books = await Book.find({});
+        return response.status(200).json({
+            count: books.length,
+            data: books
+        });
+    } catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error.message });
+    }
+
 })
 
 // Get book by id
 app.get("/books/:id", async (request, response) => {
-    const { id } = params.id;
-    const books = await Book.findById(id);
-    return response.status(200).send(books);
+    try {
+        const { id } = request.params;
+        const books = await Book.findById(id);
+        return response.status(200).send(books);
+    } catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error.message });
+    }
+
 })
 
 // Create new book
 app.post("/books", async (request, response) => {
-    const newBook = {
-        title: request.body.title,
-        author: request.body.author,
-        publishYear: request.body.publishYear
+    try {
+        if (!request.body.title ||
+            !request.body.author ||
+            !request.body.publishYear) {
+            return response.status(400).send('Send all fields: title, author, publishYear');
+        }
+
+        const newBook = {
+            title: request.body.title,
+            author: request.body.author,
+            publishYear: request.body.publishYear
+        }
+        const book = await Book.create(newBook);
+        return response.status(201).send(book);
+
+    } catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error.message });
     }
-    const book = await Book.create(newBook);
-    return response.status(201).send(book);
 })
 
+// Update a book
+app.put("/books/:id", async (request, response) => {
+    try {
+        if (!request.body.title ||
+            !request.body.author ||
+            !request.body.publishYear) {
+            return response.status(400).send('Send all fields: title, author, publishYear');
+        }
+        const { id } = request.params;
+        const result = await Book.findByIdAndUpdate(id, request.body);
+        if (!result) {
+            return response.status(404).send('Book not found')
+        }
+        return response.status(200).send('Book updated successfully')
+    } catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error.message });
+    }
+
+})
+
+// Delete a book
+app.delete("/books/:id", async (request, response) => {
+    const { id } = request.params;
+    const result = await Book.findByIdAndDelete(id)
+    if (!result) {
+        return response.status(404).send('Book not found')
+    }
+    return response.status(200).send('Book deleted successfully')
+})
 
 
 mongoose
