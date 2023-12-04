@@ -7,7 +7,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
 
 const Home = () => {
-    const [books, setBooks] = useState([0, 1, 2]);
+    const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
