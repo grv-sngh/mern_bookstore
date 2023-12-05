@@ -11,7 +11,7 @@ const CreateBook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleBookSave = () => {
+  const handleSaveBook = () => {
     const data = {
       title,
       author,
@@ -64,7 +64,7 @@ const CreateBook = () => {
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>
-        <button className='p-2 bg-sky-300 m-8' onClick={handleBookSave}>
+        <button className='p-2 bg-sky-300 m-8' onClick={handleSaveBook}>
           Save
         </button>
       </div>
