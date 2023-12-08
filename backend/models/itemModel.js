@@ -19,4 +19,4 @@ const itemSchema = mongoose.Schema(
         timestamps: true,
     }
 )
-export const item = mongoose.model('Item', itemSchema);
+export const Item = mongoose.model('Item', itemSchema);
