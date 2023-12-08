@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from '../components/Spinner';
+import Spinner from '../../components/Spinner';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md'
-import BooksTable from '../components/home/BooksTable'
-import BooksCard from '../components/home/BooksCard'
+import BooksTable from '../../components/home/BooksTable'
+import BooksCard from '../../components/home/BooksCard'
 
 
 const Home = () => {
