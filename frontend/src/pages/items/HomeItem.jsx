@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 const HomeItem = () => {
     const [items, setItems] = useState([]);
@@ -17,6 +18,8 @@ const HomeItem = () => {
     return (
         <div>
             Home Item
+            <br />
+            <Link to="/items/create">Click here to add new item</Link>
             <ul>
                 {items.map((item) => (
                     <li key={item._id}>
