@@ -37,14 +37,16 @@ router.post("/", async (request, response) => {
     try {
         if (!request.body.name ||
             !request.body.quantity ||
-            !request.body.description) {
-            return response.status(400).send('Send all fields: name, quantity, description');
+            !request.body.description ||
+            !request.body.image) {
+            return response.status(400).send('Send all fields: name, quantity, description, image');
         }
 
         const newItem = {
             name: request.body.name,
             quantity: request.body.quantity,
-            description: request.body.description
+            description: request.body.description,
+            image: request.body.image
         }
         const item = await Item.create(newItem);
         return response.status(201).send(item);
@@ -60,8 +62,9 @@ router.put("/:id", async (request, response) => {
     try {
         if (!request.body.name ||
             !request.body.quantity ||
-            !request.body.description) {
-            return response.status(400).send('Send all fields: name, quantity, description');
+            !request.body.description ||
+            !request.body.image) {
+            return response.status(400).send('Send all fields: name, quantity, description, image');
         }
         const { id } = request.params;
         const result = await Item.findByIdAndUpdate(id, request.body);

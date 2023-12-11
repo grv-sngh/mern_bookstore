@@ -1,8 +1,15 @@
 import React from 'react'
+import ItemsCard from '../../components/items/ItemsCard'
 
-const ShowItem = () => {
+const ShowItem = ({items}) => {
   return (
-    <div>ShowItem</div>
+    <>
+      {items.map((item) => {
+        return(
+          <ItemsCard item={item}/>
+        )
+      })}
+    </>
   )
 }
 
