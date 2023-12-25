@@ -10,6 +10,7 @@ import CreateItem from "./pages/items/CreateItem"
 import ShowItem from "./pages/items/ShowItem"
 import EditItem from "./pages/items/EditItem"
 import DeleteItem from "./pages/items/DeleteItem"
+import Blog from "./pages/blog/Blog"
 
 const App = () => {
   return(
@@ -25,6 +26,8 @@ const App = () => {
       <Route path="/items/details/:id" element={<ShowItem />} />
       <Route path="/items/edit/:id" element={<EditItem />} />
       <Route path="/items/delete/:id" element={<DeleteItem />} />
+
+      <Route path="/blog" element={<Blog />} />
     </Routes>
   )
 }
