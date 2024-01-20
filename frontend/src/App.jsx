@@ -5,11 +5,12 @@ import CreateBook from "./pages/CreateBook";
 import EditBook from "./pages/EditBook";
 import ShowBook from "./pages/ShowBook";
 import DeleteBook from "./pages/DeleteBook";
-
+import Chat from "./pages/Chat";
 const App = () => {
   return(
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/chat" element={<Chat />} />
       <Route path="/books/create" element={<CreateBook />} />
       <Route path="/books/details/:id" element={<ShowBook />} />
       <Route path="/books/edit/:id" element={<EditBook />} />

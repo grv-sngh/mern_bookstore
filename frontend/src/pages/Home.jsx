@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md'
 import BooksTable from '../components/home/BooksTable'
 import BooksCard from '../components/home/BooksCard'
-
+import Searchbar from '../components/Searchbar'
+import Welcome from '../components/Welcome'
 
 const Home = () => {
     const [books, setBooks] = useState([]);
@@ -14,7 +15,7 @@ const Home = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get("https://super-space-acorn-v9wxvwvw56g2p4gj-5555.app.github.dev/books")
+            .get("https://expert-space-carnival-r44vp9qw5r69cp56g-5555.app.github.dev/books")
             .then((response) => {
                 setBooks(response.data.data);
                 setLoading(false);
@@ -27,7 +28,9 @@ const Home = () => {
     }, [])
     return (
         <div className='p-4'>
-            <div className='flex justify-center items-center gap-x-4'>
+            <Welcome/>
+            {/* <div className='flex justify-center items-center gap-x-4'>
+
                 <button
                     onClick={() => setShowType('table')}>
                         Table
@@ -46,9 +49,11 @@ const Home = () => {
             {loading ? (
                 <Spinner />
             ) : (showType === 'table' ? < BooksTable books={books} />: <BooksCard books={books} />)
-            }
+            } */}
         </div>
+        
     )
+    
 }
 
 export default Home
