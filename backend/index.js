@@ -7,11 +7,20 @@ import cors from 'cors';
 
 const app = express();
 
+// CORS policy
+// const cors = require('cors');
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
+
+
 // Middleware for parsing request body
 app.use(express.json());
 
-// CORS policy
-app.use(cors());
+
 
 // Index get request
 app.get("/", (request, response) => {

@@ -14,7 +14,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`https://super-space-acorn-v9wxvwvw56g2p4gj-5555.app.github.dev/books/${id}`)
+      .delete(`http://localhost:5555/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book deleted successfully!", { variant: "success" });

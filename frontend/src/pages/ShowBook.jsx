@@ -12,7 +12,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://super-space-acorn-v9wxvwvw56g2p4gj-5555.app.github.dev/books/${id}`)
+      .get(`http://localhost:5555/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
