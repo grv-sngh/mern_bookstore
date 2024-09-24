@@ -14,7 +14,7 @@ const Home = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get("https://super-space-acorn-v9wxvwvw56g2p4gj-5555.app.github.dev/books")
+            .get("http://localhost:5555/")
             .then((response) => {
                 setBooks(response.data.data);
                 setLoading(false);

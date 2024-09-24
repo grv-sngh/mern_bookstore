@@ -21,7 +21,7 @@ const CreateBook = () => {
     };
     setLoading(true);
     axios
-      .post("https://super-space-acorn-v9wxvwvw56g2p4gj-5555.app.github.dev/books", data)
+      .post("http://localhost:5555/", data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created Successfully!", { variant: "success" })

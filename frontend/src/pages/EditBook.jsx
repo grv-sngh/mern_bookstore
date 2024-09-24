@@ -17,7 +17,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://super-space-acorn-v9wxvwvw56g2p4gj-5555.app.github.dev/books/${id}`)
+      .get(`http://localhost:5555/${id}`)
       .then((response) => {
         setTitle(response.data.title);
         setAuthor(response.data.author);
