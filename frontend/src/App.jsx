@@ -5,6 +5,7 @@ import CreateBook from "./pages/CreateBook";
 import EditBook from "./pages/EditBook";
 import ShowBook from "./pages/ShowBook";
 import DeleteBook from "./pages/DeleteBook";
+import BestSellerBooks from './pages/bestSellers';
 
 const App = () => {
   return(
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/books/details/:id" element={<ShowBook />} />
       <Route path="/books/edit/:id" element={<EditBook />} />
       <Route path="/books/delete/:id" element={<DeleteBook />} />
+      <Route path="/bestsellers" element={<BestSellerBooks />} />
     </Routes>
   )
 }
